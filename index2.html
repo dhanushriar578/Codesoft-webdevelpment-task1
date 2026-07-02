@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>TechFest 2026</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+transition:0.5s;
+}
+
+.dark-mode{
+background:#121212;
+color:white;
+}
+
+.hero{
+height:100vh;
+background:linear-gradient(135deg,#0d6efd,#6610f2);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:4rem;
+font-weight:bold;
+animation:fadeIn 2s;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(-50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.event-card{
+transition:0.4s;
+cursor:pointer;
+}
+
+.event-card:hover{
+transform:scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.counter-box{
+background:#0d6efd;
+color:white;
+padding:30px;
+border-radius:15px;
+}
+
+footer{
+background:#212529;
+color:white;
+padding:20px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<div class="container">
+
+<a class="navbar-brand" href="#">TechFest 2026</a>
+
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#home">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#events">Events</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#register">Register</a>
+</li>
+
+<li class="nav-item">
+<button class="btn btn-warning ms-3"
+onclick="toggleMode()">
+🌙 Mode
+</button>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+
+<div>
+
+<h1>COLLEGE TECH FEST 2026</h1>
+
+<p class="lead">
+Innovation • Coding • Robotics • Fun
+</p>
+
+<button class="btn btn-light btn-lg"
+data-bs-toggle="modal"
+data-bs-target="#registerModal">
+Join Now
+</button>
+
+</div>
+
+</section>
+
+<!-- Events -->
+<section class="container py-5" id="events">
+
+<h2 class="text-center mb-5">
+Featured Events
+</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="card event-card">
+<div class="card-body text-center">
+<h3>🤖 Robotics</h3>
+<p>Build and compete with robots.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card event-card">
+<div class="card-body text-center">
+<h3>💻 Hackathon</h3>
+<p>24 Hours Coding Challenge.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card event-card">
+<div class="card-body text-center">
+<h3>🎤 Cultural Night</h3>
+<p>Music, Dance and Fun Events.</p>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- Countdown -->
+<section class="container py-5 text-center">
+
+<h2>Event Countdown</h2>
+
+<div class="counter-box mt-4">
+<h1 id="countdown"></h1>
+</div>
+
+</section>
+
+<!-- Registration -->
+<section class="container py-5" id="register">
+
+<h2 class="text-center">
+Register Today
+</h2>
+
+<div class="text-center mt-4">
+
+<button class="btn btn-primary btn-lg"
+data-bs-toggle="modal"
+data-bs-target="#registerModal">
+Open Registration Form
+</button>
+
+</div>
+
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="registerModal">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5 class="modal-title">
+Event Registration
+</h5>
+
+<button class="btn-close"
+data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+<form onsubmit="successMsg(event)">
+
+<input type="text"
+class="form-control mb-3"
+placeholder="Student Name"
+required>
+
+<input type="email"
+class="form-control mb-3"
+placeholder="Email"
+required>
+
+<select class="form-select mb-3">
+
+<option>Choose Event</option>
+
+<option>Robotics</option>
+
+<option>Hackathon</option>
+
+<option>Cultural Night</option>
+
+</select>
+
+<button class="btn btn-success w-100">
+Submit
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+
+<h4>College Tech Fest 2026</h4>
+
+<p>Department of Computer Science</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+// Dark Mode
+
+function toggleMode(){
+document.body.classList.toggle("dark-mode");
+}
+
+// Registration Message
+
+function successMsg(e){
+e.preventDefault();
+alert("Registration Successful!");
+}
+
+// Countdown Timer
+
+let eventDate =
+new Date("December 31, 2026 09:00:00").getTime();
+
+setInterval(function(){
+
+let now = new Date().getTime();
+
+let gap = eventDate - now;
+
+let days =
+Math.floor(gap/(1000*60*60*24));
+
+let hours =
+Math.floor((gap%(1000*60*60*24))
+/(1000*60*60));
+
+let minutes =
+Math.floor((gap%(1000*60*60))
+/(1000*60));
+
+let seconds =
+Math.floor((gap%(1000*60))/1000);
+
+document.getElementById("countdown")
+.innerHTML =
+days+" Days "+
+hours+" Hours "+
+minutes+" Min "+
+seconds+" Sec";
+
+},1000);
+
+</script>
+
+</body>
+</html>
